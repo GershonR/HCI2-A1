@@ -31,7 +31,7 @@ function timer() {
 }
 
 function stopTimer() {
-    console.log(h1.textContent);
+    alert(h1.textContent);
     clearTimer();
 }
 

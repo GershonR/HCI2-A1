@@ -56,6 +56,7 @@ BigCircleEnd = function(ctx,x, y, color, circleSize) {
  * Document initilization
  */
 function init() {
+    
   var canvas = document.getElementsByTagName("canvas")[0];
   // Set canvas to device size
   var timerHeight = document.getElementById('timer').offsetHeight;

@@ -12,6 +12,11 @@
  */
 const CIRCLE_WIDTH = 50;
 
+/**
+ * Public Variables
+ */
+var ctx;
+
 
 /**
  * Circle Spawning
@@ -25,7 +30,7 @@ BigCircle = function(ctx,x, y, color, circleSize) {
     this.clicked=function(){
       ctx.fillStyle='#ff0000'
       ctx.fill();
-	  alert("Clicked Circle");
+	  timer();
     }
 };
 
@@ -35,18 +40,20 @@ BigCircle = function(ctx,x, y, color, circleSize) {
 function init() {
   var canvas = document.getElementsByTagName("canvas")[0];
   // Set canvas to device size
+  var timerHeight = document.getElementById('timer').offsetHeight;
+  //console.log(offsetHeight);
   canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.height = window.innerHeight - timerHeight;
   var width = canvas.width;
   var height = canvas.height;
   // Generate coords to spawn the circle within canvas bounds
   var randomX = getRandomInRange(CIRCLE_WIDTH, width - CIRCLE_WIDTH);
-  var randomY = getRandomInRange(CIRCLE_WIDTH, height - CIRCLE_WIDTH);
-  var ctx = canvas.getContext('2d');
+  var randomY = getRandomInRange(CIRCLE_WIDTH + timerHeight, height - CIRCLE_WIDTH - timerHeight);
+  ctx = canvas.getContext('2d');
   var bigGreen = new BigCircle(ctx,randomX, randomY, '#5eb62b', CIRCLE_WIDTH);
   $('#canvas').click(function(e){
-    var x = e.clientX
-      , y = e.clientY          
+    var x = e.clientX;
+	var y = e.clientY - timerHeight * 2;
     if(Math.pow(x-randomX,2)+Math.pow(y-randomY,2) < Math.pow(CIRCLE_WIDTH,2))   
       bigGreen.clicked()
   })    

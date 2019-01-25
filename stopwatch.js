@@ -30,6 +30,11 @@ function timer() {
     t = setTimeout(add, 1000);
 }
 
+function stopTimer() {
+    console.log(h1.textContent);
+    clearTimer();
+}
+
 function clearTimer() {
 	clearTimeout(t);
 	h1.textContent = "00:00:00";

@@ -11,16 +11,30 @@
  * Constants
  */
 const CIRCLE_WIDTH = 75;
+const DIST = 500;
 
 /**
  * Public Variables
  */
 var ctx;
+var dists = [100,200,400];
+var widths = [50,100,200];
 
 
 /**
  * Circle Spawning
  */
+BigCircleS = function(ctx,x, y, color, circleSize) {
+    ctx.beginPath();
+    ctx.arc(x, y, circleSize, 0, Math.PI * 2, true);
+    ctx.fillStyle=color
+    ctx.fill();
+    ctx.closePath();
+    this.clicked=function(){
+        console.log("Start Clicked")
+        timer();
+    }
+};
 BigCircleStart = function(ctx,x, y, color, circleSize) {
     ctx.beginPath();
     ctx.arc(x, y, circleSize, 0, Math.PI * 2, true);
@@ -52,35 +66,60 @@ BigCircleEnd = function(ctx,x, y, color, circleSize) {
  * Document initilization
  */
 function init() {
-
+  var distCheck = 0;
+  var randomXEnd = 0;
+  var randomYEnd = 0;
+  var randomXStart = 0;
+  var randomYStart = 0;
   var canvas = document.getElementsByTagName("canvas")[0];
   // Set canvas to device size
-  var timerHeight = document.getElementById('timer').offsetHeight;
+  //var timerHeight = document.getElementById('timer').offsetHeight;
   //console.log(offsetHeight);
   canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight - timerHeight;
+  canvas.height = window.innerHeight;// - timerHeight;
   var width = canvas.width;
   var height = canvas.height;
-  alert(canvas.width + " " + canvas.height);
-  // Generate coords to spawn the circle within canvas bounds
-  var randomXStart = getRandomInRange(CIRCLE_WIDTH, width - CIRCLE_WIDTH);
-  var randomYStart = getRandomInRange(CIRCLE_WIDTH + timerHeight, height - CIRCLE_WIDTH - timerHeight);
 
-  var randomXEnd = getRandomInRange(CIRCLE_WIDTH, width - CIRCLE_WIDTH);
-  var randomYEnd = getRandomInRange(CIRCLE_WIDTH + timerHeight, height - CIRCLE_WIDTH - timerHeight);
+  var randStart = getRandomInRange(0,4);
+  if(randStart < 1){
+    randomXStart = widths[0];
+    randomYStart = widths[0];
+    var rand = getRandomInRange(1,dists[0] - 1 + widths[0]);
+    randomXEnd = randomXStart + rand;
+    randomYEnd = randomYStart + Math.sqrt( Math.pow(dists[0] + widths[0],2) - Math.pow(rand,2) );
+  } else if(randStart < 2){
+    randomXStart = widths[0];
+    randomYStart = height - widths[0];
+    var rand = getRandomInRange(1,dists[0] - 1 + widths[0]);
+    randomXEnd = randomXStart + rand;
+    randomYEnd = randomYStart - Math.sqrt( Math.pow(dists[0] + widths[0],2) - Math.pow(rand,2) );
+  } else if(randStart < 3){
+    randomXStart = width - widths[0];
+    randomYStart = widths[0];
+    var rand = getRandomInRange(1,dists[0] - 1 + widths[0]);
+    randomXEnd = randomXStart - rand;
+    randomYEnd = randomYStart + Math.sqrt( Math.pow(dists[0] + widths[0],2) - Math.pow(rand,2) );
+  } else if(randStart < 4){
+    randomXStart = width - widths[0];
+    randomYStart = height - widths[0];
+    var rand = getRandomInRange(1,dists[0] - 1 + widths[0]);
+    randomXEnd = randomXStart - rand;
+    randomYEnd = randomYStart - Math.sqrt( Math.pow(dists[0] + widths[0],2) - Math.pow(rand,2) );
+  }
 
   ctx = canvas.getContext('2d');
-  var bigGreen = new BigCircleStart(ctx,randomXStart, randomYStart, '#5eb62b', CIRCLE_WIDTH);
-  var bigGreen2 = new BigCircleEnd(ctx, randomXEnd, randomYEnd, '#ff0000', CIRCLE_WIDTH)
+  var bigGreen = new BigCircleStart(ctx, randomXStart, randomYStart, '#5eb62b', widths[0]);
+  var bigGreen2 = new BigCircleEnd(ctx, randomXEnd, randomYEnd, '#ff0000', widths[0]);
   $('#canvas').click(function(e){
     var x = e.clientX;
-	var y = e.clientY - timerHeight * 2;
-    if(Math.pow(x-randomXStart,2)+Math.pow(y-randomYStart,2) < Math.pow(CIRCLE_WIDTH,2))   
+    var y = e.clientY;
+    if(Math.pow(x-randomXStart,2)+Math.pow(y-randomYStart,2) < Math.pow(widths[0],2))   
       bigGreen.clicked();
 
-    if(Math.pow(x-randomXEnd,2)+Math.pow(y-randomYEnd,2) < Math.pow(CIRCLE_WIDTH,2))   
-    bigGreen2.clicked();
-  })    
+    if(Math.pow(x-randomXEnd,2)+Math.pow(y-randomYEnd,2) < Math.pow(widths[0],2))   
+      bigGreen2.clicked();
+  })
+
 }
 
 /**

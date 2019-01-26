@@ -10,7 +10,7 @@
 /**
  * Constants
  */
-const CIRCLE_WIDTH = 50;
+const CIRCLE_WIDTH = 75;
 
 /**
  * Public Variables
@@ -29,8 +29,6 @@ BigCircleStart = function(ctx,x, y, color, circleSize) {
     ctx.closePath();
     this.clicked=function(){
         console.log("Start Clicked")
-        //ctx.fillStyle='#ff0000'
-        //ctx.fill();
         timer();
     }
 };
@@ -43,8 +41,6 @@ BigCircleEnd = function(ctx,x, y, color, circleSize) {
     ctx.closePath();
     this.clicked=function(){
         console.log("End Clicked")
-        //ctx.fillStyle='#ff0000'
-        //ctx.fill();
         stopTimer();
     }
 };
@@ -56,7 +52,7 @@ BigCircleEnd = function(ctx,x, y, color, circleSize) {
  * Document initilization
  */
 function init() {
-    
+
   var canvas = document.getElementsByTagName("canvas")[0];
   // Set canvas to device size
   var timerHeight = document.getElementById('timer').offsetHeight;

@@ -27,7 +27,7 @@ function add() {
     timer();
 }
 function timer() {
-    t = setTimeout(add, 1000);
+    t = setTimeout(add, 1);
 }
 
 function stopTimer() {

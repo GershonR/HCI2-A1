@@ -61,6 +61,7 @@ function init() {
   canvas.height = window.innerHeight - timerHeight;
   var width = canvas.width;
   var height = canvas.height;
+  alert(canvas.width + " " + canvas.height);
   // Generate coords to spawn the circle within canvas bounds
   var randomXStart = getRandomInRange(CIRCLE_WIDTH, width - CIRCLE_WIDTH);
   var randomYStart = getRandomInRange(CIRCLE_WIDTH + timerHeight, height - CIRCLE_WIDTH - timerHeight);

@@ -17,8 +17,8 @@ const DIST = 500;
  * Public Variables
  */
 var ctx;
-var dists = [100,200,400];
-var widths = [50,100,200];
+var dists = [400,500,600];
+var widths = [75,100,125];
 
 
 /**

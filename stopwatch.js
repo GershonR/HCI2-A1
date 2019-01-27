@@ -36,8 +36,8 @@ function timer() {
 }
 
 function stopTimer() {
-    alert(timeResult);
     timeLog.push(timeResult);
+	console.log(timeResult);
     timeLogLength++;
     var outputTimeString = "";
     if(timeLogLength == 90) {
@@ -45,7 +45,6 @@ function stopTimer() {
             outputTimeString += timeLog[x] + "\n";
         }
         console.log(outputTimeString);
-        alert(outputTimeString);
     }
     clearTimer();
 }

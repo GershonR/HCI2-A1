@@ -37,7 +37,7 @@ $(document).ready(function() {
 
     if(Math.pow(x-randomXEnd,2)+Math.pow(y-randomYEnd,2) < Math.pow(widths[0],2)){
       if(_start == 1){
-        times += trialNumber + ". " + bigGreen2.clicked() + "\n";
+        times += trialNumber + ".    " + (trialNumber < 10 ? "  " : "") + bigGreen2.clicked() + "\n";
         _end = 1;
       }
     }
@@ -51,6 +51,9 @@ $(document).ready(function() {
   })
 });
 
+/**
+ * Circle Spawning
+ */
 BigCircleStart = function(ctx,x, y, color, circleSize) {
     ctx.beginPath();
     ctx.arc(x, y, circleSize, 0, Math.PI * 2, true);
@@ -72,6 +75,7 @@ BigCircleEnd = function(ctx,x, y, color, circleSize) {
     this.clicked=function(){
         console.log("End Clicked")
         return stopTimer();
+        stopTimer();
     }
 };
 
@@ -164,4 +168,19 @@ function drawEnd(){
   ctx.fillStyle = "black";
   ctx.textAlign = "center";
   ctx.fillText("Thank you for participating!",width/2,height/2);
+}
+
+/**
+ * Shuffles array in place.
+ * @param {Array} a items An array containing the items.
+ */
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
 }

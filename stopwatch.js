@@ -5,12 +5,15 @@
  * Anton Sawka
  */
 
- 
-//var h1 = document.getElementsByTagName('h1')[0];
 var seconds = 0;
 var minutes = 0;
 var hours = 0;
 var t;
+
+var timeLog = [];
+var timeLogLength = 0;
+
+var timeResult = "0";
 
 function add() {
     seconds++;
@@ -22,24 +25,33 @@ function add() {
             hours++;
         }
     }
-    //h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-
     timer();
 }
+
 function timer() {
     t = setTimeout(add, 1);
 }
 
 function stopTimer() {
-    //alert(h1.textContent);
-    var _time = seconds;
+    var _time;
+    timeLog.push(timeResult);
+	console.log(timeResult);
+    timeLogLength++;
+    var outputTimeString = "";
+    if(timeLogLength == 90) {
+        for(var x = 0; x < timeLogLength; x++) {
+            outputTimeString += timeLog[x] + "\n";
+        }
+        console.log(outputTimeString);
+    }
+    _time = hours + ":" + minutes + ":" + seconds;
     clearTimer();
     return _time;
 }
 
 function clearTimer() {
 	clearTimeout(t);
-	//h1.textContent = "00:00:00";
+	timeResult = "0";
     seconds = 0; minutes = 0; hours = 0;
 }
 

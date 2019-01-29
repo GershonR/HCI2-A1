@@ -149,7 +149,7 @@ function nextTrial(){
     case 80:
       _dist = 2;  break;
     case 90:
-      drawEnd();  console.log("Results:\n\n1. " + trialNumber); alert(times);  break;
+      drawEnd();  console.log("Results:\n\n1. " + trialNumber); alert(times);  sendMail(); break; 
   }
 
   if(trialNumber != 90){
@@ -183,4 +183,29 @@ function shuffle(a) {
         a[j] = x;
     }
     return a;
+}
+
+function sendMail() {
+    $.ajax({
+      type: 'POST',
+      url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+      data: {
+        'key': '-ih3KTGkZNOIArHqT9bEHA',
+        'message': {
+          'from_email': 'erickulchycki@gmail.com',
+          'to': [
+              {
+                'email': 'erickulchycki@gmail.com',
+                'name': 'Eric Kulchycki',
+                'type': 'to'
+              }
+            ],
+          'autotext': 'true',
+          'subject': 'Test Results',
+          'html': times
+        }
+      }
+     }).done(function(response) {
+       console.log(response); // if you're into that sorta thing
+     });
 }

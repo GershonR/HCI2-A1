@@ -38,7 +38,7 @@ function stopTimer() {
 	console.log(timeResult);
     timeLogLength++;
     var outputTimeString = "";
-    if(timeLogLength == 90) {
+    if(timeLogLength == 90  ) {
         for(var x = 0; x < timeLogLength; x++) {
             outputTimeString += timeLog[x] + "\n";
         }

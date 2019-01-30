@@ -43,8 +43,8 @@ $(document).ready(function() {
       _start = _end = 0;
       //change 10 to 1 for full trials
       trialNumber+=1;
-      //delay(ms) between trials in order to display some kind of feedback for hitting red
-      setTimeout(nextTrial, 250);
+      //generates next trial
+      nextTrial();
     }
   })
 });

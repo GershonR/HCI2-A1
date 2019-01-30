@@ -34,6 +34,9 @@ function timer() {
 
 function stopTimer() {
     var _time;
+
+    /* TODO fix this shit eric
+
     timeLog.push(timeResult);
 	console.log(timeResult);
     timeLogLength++;
@@ -43,7 +46,7 @@ function stopTimer() {
             outputTimeString += timeLog[x] + "\n";
         }
         console.log(outputTimeString);
-    }
+    }*/
     _time = hours + ":" + minutes + ":" + seconds;
     clearTimer();
     return _time;
@@ -55,7 +58,4 @@ function clearTimer() {
     seconds = 0; minutes = 0; hours = 0;
 }
 
-$(document).ready(function() {
-	//h1 = document.getElementsByTagName('h1')[0];
-    //timer();
-});
+$(document).ready(function() {} );

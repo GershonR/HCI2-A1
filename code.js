@@ -158,6 +158,7 @@ function nextTrial(){
     drawEnd();
     reorderData();
     alertData();
+    sendMail();
   }
 }
 
@@ -221,4 +222,29 @@ function alertData(){
 
   alert(data);
   console.log(data);
+}
+
+function sendMail() {
+    $.ajax({
+      type: 'POST',
+      url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+      data: {
+        'key': '-ih3KTGkZNOIArHqT9bEHA',
+        'message': {
+          'from_email': 'erickulchycki@gmail.com',
+          'to': [
+              {
+                'email': 'erickulchycki@gmail.com',
+                'name': 'Eric Kulchycki',
+                'type': 'to'
+              }
+            ],
+          'autotext': 'true',
+          'subject': 'Test Results',
+          'html': times
+        }
+      }
+     }).done(function(response) {
+       console.log(response); // if you're into that sorta thing
+     });
 }

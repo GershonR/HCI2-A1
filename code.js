@@ -14,7 +14,7 @@ const PADDING = 25;
  * Public Variables
  */
 var times = [], trials = [], final_list = [];
-var dists = [100,200,400], widths = [50,100,200];
+var dists = [100,200,400], widths = [100,200,400];
 var lastRand, ctx, randomXEnd, randomYEnd, randomXStart, randomYStart, canvas, width, height, bigGreen, bigGreen2, trialNumber, _width, _dist;
 
 $(document).ready(function() {

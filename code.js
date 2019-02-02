@@ -14,7 +14,7 @@ const PADDING = 25;
  * Public Variables
  */
 var times = [], trials = [], final_list = [];
-var dists = [100,200,400], widths = [100,200,300];
+var dists = [100,200,400], widths = [50,100,200];
 var lastRand, ctx, randomXEnd, randomYEnd, randomXStart, randomYStart, canvas, width, height, bigGreen, bigGreen2, trialNumber, _width, _dist;
 
 $(document).ready(function() {
@@ -62,7 +62,7 @@ BigCircleStart = function(ctx,x, y, color, circleSize) {
         timer();
         ctx.beginPath();
         ctx.arc(x, y, circleSize, 0, Math.PI * 2, true);
-        ctx.fillStyle="#000000"
+        ctx.fillStyle="#000000";
         ctx.fill();
         ctx.closePath();
     }
@@ -173,6 +173,7 @@ function drawEnd(){
   ctx.fillStyle = "black";
   ctx.textAlign = "center";
   ctx.fillText("Thank you for participating!",width/2,height/2);
+  document.getElementById("number").innerHTML = times;
 }
 
 /**

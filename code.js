@@ -42,7 +42,7 @@ $(document).ready(function() {
     if(_start == 1 && _end == 1){
       _start = _end = 0;
       //change 10 to 1 for full trials
-      trialNumber+=10;
+      trialNumber+=1;
       //generates next trial
       nextTrial();
     }
@@ -204,7 +204,7 @@ function generateList(){
 function reorderData(){
   //re-associate times with shuffled trials
   // change 9 to 90 for full trials
-  for(var i = 0; i < 9; i++){
+  for(var i = 0; i < 90; i++){
     final_list.push([trials[i][0], times[i][1]]);
   }
 
@@ -217,7 +217,7 @@ function alertData(){
 
   //build data string
   // change 9 to 90 for full trials
-  for(var i = 0; i < 9; i++){
+  for(var i = 0; i < 90; i++){
     data += final_list[i][0] + ".    " + (final_list[i][0] < 10 ? "  " : "") + final_list[i][1] + "\n";
   }
 

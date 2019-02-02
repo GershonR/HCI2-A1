@@ -173,7 +173,7 @@ function drawEnd(){
   ctx.fillStyle = "black";
   ctx.textAlign = "center";
   ctx.fillText("Thank you for participating!",width/2,height/2);
-  document.getElementById("number").innerHTML = times;
+  document.getElementById("output").innerHTML = times;
 }
 
 /**

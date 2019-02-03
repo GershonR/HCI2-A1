@@ -17,7 +17,7 @@ var timeResult = "0";
 
 function add() {
     seconds++;
-    if (seconds >= 60) {
+    if (seconds >= 1000) {
         seconds = 0;
         minutes++;
         if (minutes >= 60) {

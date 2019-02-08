@@ -65,6 +65,7 @@ BigCircleStart = function(ctx,x, y, color, circleSize) {
         ctx.fillStyle="#000000";
         ctx.fill();
         ctx.closePath();
+		bigGreen2 = new BigCircleEnd(ctx, randomXEnd, randomYEnd, '#ff0000', _width/2);
     }
 };
 
@@ -143,7 +144,6 @@ function generatePoints(){
 
   // widths[_width]/2 : function wants radius NOT diameter
   bigGreen = new BigCircleStart(ctx, randomXStart, randomYStart, '#5eb62b', _width/2);
-  bigGreen2 = new BigCircleEnd(ctx, randomXEnd, randomYEnd, '#ff0000', _width/2);
 
   lastRand = randStart;
 }
